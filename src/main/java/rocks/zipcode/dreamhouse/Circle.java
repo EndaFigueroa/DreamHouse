@@ -4,7 +4,7 @@ import java.awt.geom.*;
 
 /**
  * A circle that can be manipulated and that draws itself on a canvas.
- * 
+ *
  * @author  Michael Kölling and David J. Barnes
  * @version 1.0  (15 July 2000)
  */
@@ -23,8 +23,8 @@ public class Circle
     public Circle()
     {
         diameter = 30;
-        xPosition = 20;
-        yPosition = 60;
+        xPosition = 0;
+        yPosition = 0;
         color = "blue";
         isVisible = false;
     }
@@ -106,12 +106,12 @@ public class Circle
     {
         int delta;
 
-        if(distance < 0) 
+        if(distance < 0)
         {
             delta = -1;
             distance = -distance;
         }
-        else 
+        else
         {
             delta = 1;
         }
@@ -130,12 +130,12 @@ public class Circle
     {
         int delta;
 
-        if(distance < 0) 
+        if(distance < 0)
         {
             delta = -1;
             distance = -distance;
         }
-        else 
+        else
         {
             delta = 1;
         }
@@ -174,7 +174,7 @@ public class Circle
     {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
-            canvas.draw(this, color, new Ellipse2D.Double(xPosition, yPosition, 
+            canvas.draw(this, color, new Ellipse2D.Double(xPosition, yPosition,
                     diameter, diameter));
             canvas.wait(10);
         }

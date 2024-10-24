@@ -29,8 +29,8 @@ public class Canvas
     public static Canvas getCanvas()
     {
         if(canvasSingleton == null) {
-            canvasSingleton = new Canvas("BlueJ Shapes Demo", 300, 300, 
-                    Color.white);
+            canvasSingleton = new Canvas("BlueJ Shapes Demo", 500, 500,
+                    Color.blue);
         }
         canvasSingleton.setVisible(true);
         return canvasSingleton;
@@ -45,7 +45,7 @@ public class Canvas
     private Image canvasImage;
     private List<Object> objects;
     private HashMap<Object, ShapeDescription> shapes;
-    
+
     /**
      * Create a Canvas.
      * @param title  title to appear in Canvas Frame
@@ -72,7 +72,7 @@ public class Canvas
      * when made visible. This method can also be used to bring an already
      * visible canvas to the front of other windows.
      * @param visible  boolean value representing the desired visibility of
-     * the canvas (true or false) 
+     * the canvas (true or false)
      */
     public void setVisible(boolean visible)
     {
@@ -95,9 +95,9 @@ public class Canvas
      * @param  color            the color of the shape
      * @param  shape            the shape object to be drawn on the canvas
      */
-     // Note: this is a slightly backwards way of maintaining the shape
-     // objects. It is carefully designed to keep the visible shape interfaces
-     // in this project clean and simple for educational purposes.
+    // Note: this is a slightly backwards way of maintaining the shape
+    // objects. It is carefully designed to keep the visible shape interfaces
+    // in this project clean and simple for educational purposes.
     public void draw(Object referenceObject, String color, Shape shape)
     {
         objects.remove(referenceObject);   // just in case it was already there
@@ -105,10 +105,10 @@ public class Canvas
         shapes.put(referenceObject, new ShapeDescription(shape, color));
         redraw();
     }
- 
+
     /**
      * Erase a given shape's from the screen.
-     * @param  referenceObject  the shape object to be erased 
+     * @param  referenceObject  the shape object to be erased
      */
     public void erase(Object referenceObject)
     {
@@ -119,27 +119,50 @@ public class Canvas
 
     /**
      * Set the foreground colour of the Canvas.
-     * @param  newColour   the new colour for the foreground of the Canvas 
+     * @param  newColour   the new colour for the foreground of the Canvas
      */
     public void setForegroundColor(String colorString)
     {
         if(colorString.equals("red"))
             graphic.setColor(Color.red);
+        else if(colorString.equals("pink"))
+            graphic.setColor(Color.pink);
+        else if(colorString.equals("darkPink"))
+            graphic.setColor(Color.pink.darker());
         else if(colorString.equals("black"))
             graphic.setColor(Color.black);
+        else if(colorString.equals("lightGray"))
+            graphic.setColor(Color.lightGray);
+        else if(colorString.equals("gray"))
+            graphic.setColor(Color.gray);
+        else if(colorString.equals("darkGray"))
+            graphic.setColor(Color.darkGray);
         else if(colorString.equals("blue"))
             graphic.setColor(Color.blue);
+        else if(colorString.equals("darkBlue"))
+            graphic.setColor(Color.blue.darker());
+        else if(colorString.equals("cyan"))
+            graphic.setColor(Color.cyan);
+        else if(colorString.equals("darkCyan"))
+            graphic.setColor(Color.cyan.darker());
         else if(colorString.equals("yellow"))
             graphic.setColor(Color.yellow);
+        else if(colorString.equals("darkYellow"))
+            graphic.setColor(Color.yellow.darker());
         else if(colorString.equals("green"))
             graphic.setColor(Color.green);
+        else if(colorString.equals("darkGreen"))
+            graphic.setColor(Color.green.darker());
         else if(colorString.equals("magenta"))
             graphic.setColor(Color.magenta);
+        else if(colorString.equals("darkMagenta"))
+            graphic.setColor(Color.magenta.darker());
         else if(colorString.equals("white"))
             graphic.setColor(Color.white);
         else
             graphic.setColor(Color.black);
     }
+
 
     /**
      * Wait for a specified number of milliseconds before finishing.
@@ -152,7 +175,7 @@ public class Canvas
         try
         {
             Thread.sleep(milliseconds);
-        } 
+        }
         catch (Exception e)
         {
             // ignoring exception at the moment
@@ -170,7 +193,7 @@ public class Canvas
         }
         canvas.repaint();
     }
-       
+
     /**
      * Erase the whole canvas. (Does not repaint.)
      */
@@ -196,7 +219,7 @@ public class Canvas
             g.drawImage(canvasImage, 0, 0, null);
         }
     }
-    
+
     /************************************************************************
      * Inner class CanvasPane - the actual canvas component contained in the
      * Canvas frame. This is essentially a JPanel with added capability to
